@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Users Data</h2>
+    <table border="black">
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Type</th>
+            <th>Email</th>
+            <th>Appointments</th>
+            <th>Status</th>
+        </tr>
+        <% for(u of user) { %>
+            <tr>
+                <td><%= u.id %></td>
+                <td><%= u.username %></td>
+                <td><%= u.type %></td>
+                <td><%= u.email %></td>
+                <td>
+                    <form method="GET" action="/user/<%=u.id%>/appoint">
+                        <button>Appointments</button>
+                    </form>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+    <form method="GET" action="/user/new">
+        <button>Add New</button>
+    </form>
+    <hr/>
+    <a href="/">Back to home</a>
+</body>
+</html>
